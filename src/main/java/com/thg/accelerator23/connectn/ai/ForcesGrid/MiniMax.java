@@ -7,9 +7,11 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class MiniMax {
+    public static int count = 0;
+
     public static ArrayList<Integer> getMove(Board board, int depth, int alpha, int beta, boolean maximise, Counter counter, Position position) {
 //        System.out.println("depth: "+depth+", alpha: "+alpha+", beta: "+beta+", maximise: "+maximise);
-
+        count++;
         ArrayList<Position> positions = Analysis.getValidLocations(board);
         boolean gameOver = Analysis.gameOver(board, counter);
         Random rand = new Random();
@@ -38,9 +40,9 @@ public class MiniMax {
                     Board boardCopy = new Board(board, pos.getX(), counter);
                     int new_score = getMove(boardCopy, depth - 1, alpha, beta, false, counter, pos).get(1);
 
-                    System.out.println("depth: "+depth+"; counter: "+ counter.getStringRepresentation() + "; column: "+pos.getX() + "; score: "+ new_score);
-                    System.out.println("simulated board:");
-                    forPrinting.printBoard(boardCopy);
+                    //System.out.println("depth: "+depth+"; counter: "+ counter.getStringRepresentation() + "; column: "+pos.getX() + "; score: "+ new_score);
+                    //System.out.println("simulated board:");
+                    //forPrinting.printBoard(boardCopy);
 
                     if (new_score > score) {
                         score = new_score;
@@ -61,9 +63,9 @@ public class MiniMax {
                     Board boardCopy = new Board(board, pos.getX(), counter.getOther());
                     int new_score = getMove(boardCopy, depth - 1, alpha, beta, true, counter, pos).get(1);
 
-                    System.out.println("depth: "+depth+"; counter: "+ counter.getOther().getStringRepresentation() + "; column: "+pos.getX() + "; score: "+ new_score);
-                    System.out.println("simulated board:");
-                    forPrinting.printBoard(boardCopy);
+                    //System.out.println("depth: "+depth+"; counter: "+ counter.getOther().getStringRepresentation() + "; column: "+pos.getX() + "; score: "+ new_score);
+                    //System.out.println("simulated board:");
+                    //forPrinting.printBoard(boardCopy);
 
                     if (new_score < score) {
                         score = new_score;

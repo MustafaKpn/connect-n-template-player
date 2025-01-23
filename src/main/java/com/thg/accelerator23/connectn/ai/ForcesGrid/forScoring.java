@@ -118,7 +118,7 @@ public class forScoring {
                 opp += scores.get(counter.getOther());
             }
         }
-        score += (int) (pow(forcesG,3) - pow(opp,3));
+        score += (int) (pow(forcesG,3) + opp);
         return  score;
     }
 }
