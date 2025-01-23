@@ -38,8 +38,9 @@ public class MiniMax {
                     Board boardCopy = new Board(board, pos.getX(), counter);
                     int new_score = getMove(boardCopy, depth - 1, alpha, beta, false, counter, pos).get(1);
 
-//                    System.out.println("depth: "+depth+"; counter: "+ counter.getStringRepresentation() + "column: "+pos.getX()+"\nsimulated board:");
-//                    forPrinting.printBoard(boardCopy);
+                    System.out.println("depth: "+depth+"; counter: "+ counter.getStringRepresentation() + "; column: "+pos.getX() + "; score: "+ new_score);
+                    System.out.println("simulated board:");
+                    forPrinting.printBoard(boardCopy);
 
                     if (new_score > score) {
                         score = new_score;
@@ -58,10 +59,11 @@ public class MiniMax {
             try {
                 for (Position pos : positions) {
                     Board boardCopy = new Board(board, pos.getX(), counter.getOther());
-                    int new_score = getMove(boardCopy, depth - 1, alpha, beta, true, counter.getOther(), pos).get(1);
+                    int new_score = getMove(boardCopy, depth - 1, alpha, beta, true, counter, pos).get(1);
 
-//                    System.out.println("depth: "+depth+"; counter: "+ counter.getOther().getStringRepresentation() + "column: "+pos.getX()+"\nsimulated board:");
-//                    forPrinting.printBoard(boardCopy);
+                    System.out.println("depth: "+depth+"; counter: "+ counter.getOther().getStringRepresentation() + "; column: "+pos.getX() + "; score: "+ new_score);
+                    System.out.println("simulated board:");
+                    forPrinting.printBoard(boardCopy);
 
                     if (new_score < score) {
                         score = new_score;

@@ -17,8 +17,7 @@ public class ForcesGrid extends Player {
   @Override
   public int makeMove(Board board) {
     long tzero = System.currentTimeMillis();
-    forPrinting.printBoard(board);
-    ArrayList<Integer> result = MiniMax.getMove(board,1,-9999999,9999999,true, getCounter());
+    ArrayList<Integer> result = MiniMax.getMove(board,2,-9999999,9999999,true, getCounter());
 
     System.out.println("game over? " + Analysis.gameOver(board, getCounter()));
     //TODO: make sure said analysis uses less than 2G of heap and returns within 10 seconds on whichever machine is running it
