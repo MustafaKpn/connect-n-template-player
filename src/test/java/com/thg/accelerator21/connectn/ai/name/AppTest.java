@@ -53,13 +53,17 @@ public class AppTest {
     counters[4] = new Counter[] {null, null, null, null, null, null, null, null, null, null};
     counters[3] = new Counter[] {null, null, null, null, null, null, null, null, null, null};
     counters[2] = new Counter[] {null, null, null, null, null, null, null, null, null, null};
-    counters[1] = new Counter[] {null, O, null, O, null, null, null, null, null, null};
-    counters[0] = new Counter[] {null, X, O, X, null, null, null, O, O, null};
+    counters[1] = new Counter[] {null, null, null, null, null, null, null, null, null, null};
+    counters[0] = new Counter[] {O, null, null, null, X, X, null, null, null, null};
     counters = rotateBoard(counters);
 
     try {
       //Board blankBoard = new Board(new GameConfig(width,height,4));
+      System.out.println("initial board:");
       Board board = new Board(counters, new GameConfig(width, height, 4));
+      forPrinting.printBoard(board);
+
+      System.out.println("board after move:");
       Board board1 = new Board(board, homePlayer.makeMove(board), O);
       forPrinting.printBoard(board1);
     } catch (InvalidMoveException e) {

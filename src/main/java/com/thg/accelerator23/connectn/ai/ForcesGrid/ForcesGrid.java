@@ -17,7 +17,6 @@ public class ForcesGrid extends Player {
   @Override
   public int makeMove(Board board) {
     long tzero = System.currentTimeMillis();
-    forPrinting.printBoard(board);
 
     ArrayList<Position> validLocations = Analysis.getValidLocations(board);
 
