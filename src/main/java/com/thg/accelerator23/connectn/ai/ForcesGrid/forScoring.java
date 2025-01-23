@@ -110,15 +110,15 @@ public class forScoring {
         int opp = 0;
         for (HashMap<Counter, Integer> scores : runs) {
             if (scores.get(counter) == 3) {
-                score += 200;   // 1st priority to place winning move
+                score += 100;   // 1st priority to place winning move
             } else if (scores.get(counter.getOther()) == 3) {
-                score += 100;   // 2nd priority to block opponent winning move
+                score += 50;   // 2nd priority to block opponent winning move
             } else {
                 forcesG += scores.get(counter);
                 opp += scores.get(counter.getOther());
             }
         }
-        score += (int) (pow(forcesG,3) + opp);
+        score += ((forcesG * 2) + opp);
         return  score;
     }
 }

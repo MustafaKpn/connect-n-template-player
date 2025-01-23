@@ -2,6 +2,7 @@ package com.thg.accelerator23.connectn.ai.ForcesGrid;
 
 import com.thehutgroup.accelerator.connectn.player.*;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -14,6 +15,7 @@ public class MiniMax {
         count++;
         ArrayList<Position> positions = Analysis.getValidLocations(board);
         boolean gameOver = Analysis.gameOver(board, counter);
+
         Random rand = new Random();
         int move = rand.nextInt(board.getConfig().getWidth());
         int score;
@@ -38,11 +40,11 @@ public class MiniMax {
             try {
                 for (Position pos : positions) {
                     Board boardCopy = new Board(board, pos.getX(), counter);
+                    System.out.println("depth: "+depth+"; counter: "+ counter + "; column: "+pos.getX());
                     int new_score = getMove(boardCopy, depth - 1, alpha, beta, false, counter, pos).get(1);
 
-                    //System.out.println("depth: "+depth+"; counter: "+ counter.getStringRepresentation() + "; column: "+pos.getX() + "; score: "+ new_score);
-                    //System.out.println("simulated board:");
-                    //forPrinting.printBoard(boardCopy);
+                    System.out.println("score: "+ new_score + "\nsimulated board:");
+                    forPrinting.printBoard(boardCopy);
 
                     if (new_score > score) {
                         score = new_score;
@@ -61,11 +63,12 @@ public class MiniMax {
             try {
                 for (Position pos : positions) {
                     Board boardCopy = new Board(board, pos.getX(), counter.getOther());
+                    System.out.println("depth: "+depth+"; counter: "+ counter.getOther().getStringRepresentation() + "; column: "+pos.getX() );
+
                     int new_score = getMove(boardCopy, depth - 1, alpha, beta, true, counter, pos).get(1);
 
-                    //System.out.println("depth: "+depth+"; counter: "+ counter.getOther().getStringRepresentation() + "; column: "+pos.getX() + "; score: "+ new_score);
-                    //System.out.println("simulated board:");
-                    //forPrinting.printBoard(boardCopy);
+                    System.out.println("score: "+ new_score + "\nsimulated board:");
+                    forPrinting.printBoard(boardCopy);
 
                     if (new_score < score) {
                         score = new_score;
