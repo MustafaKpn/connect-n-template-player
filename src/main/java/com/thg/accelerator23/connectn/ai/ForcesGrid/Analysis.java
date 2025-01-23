@@ -77,7 +77,7 @@ public class Analysis {
             }
         }
         //diagonal TopLeft to BottomRight");
-        for (int c = 0; c < width; c++) {
+        for (int c = 0; c < width - 3; c++) {
             for (int r = 3; r < height; r++) {
                 if (grid[c][r] == counter && grid[c + 1][r - 1] == counter && grid[c + 2][r - 2] == counter && grid[c + 3][r - 3] == counter) {
                     return true;

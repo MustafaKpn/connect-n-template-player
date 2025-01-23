@@ -18,23 +18,11 @@ public class ForcesGrid extends Player {
   public int makeMove(Board board) {
     long tzero = System.currentTimeMillis();
     forPrinting.printBoard(board);
+    ArrayList<Integer> result = MiniMax.getMove(board,1,-9999999,9999999,true, getCounter());
 
-    ArrayList<Position> validLocations = Analysis.getValidLocations(board);
-
-    int move = 4; //default move
-    int maxValue = 0;
-
-    for (Position position : validLocations) {
-      int score = forScoring.scorePosition(board, position, getCounter());
-//      System.out.println(position.getX()+", "+ position.getY() + ": " + score);
-      if (score > maxValue) {
-        move = position.getX();
-        maxValue = score;
-      }
-    }
     System.out.println("game over? " + Analysis.gameOver(board, getCounter()));
     //TODO: make sure said analysis uses less than 2G of heap and returns within 10 seconds on whichever machine is running it
-    System.out.println("move: " + move + "  TimeElapsed: " + (System.currentTimeMillis() - tzero) + "ms");
-    return move;
+    System.out.println("move: " + result.get(0) + "  TimeElapsed: " + (System.currentTimeMillis() - tzero) + "ms");
+    return result.get(0);
   }
 }
