@@ -60,6 +60,7 @@ public class AppTest {
     try {
       //Board blankBoard = new Board(new GameConfig(width,height,4));
       Board board = new Board(counters, new GameConfig(width, height, 4));
+      forPrinting.printBoard(board);
       Board board1 = new Board(board, homePlayer.makeMove(board), O);
       forPrinting.printBoard(board1);
     } catch (InvalidMoveException e) {

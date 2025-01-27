@@ -16,7 +16,7 @@ public class ForcesGrid extends Player {
   @Override
   public int makeMove(Board board) {
     long tzero = System.currentTimeMillis();
-    ArrayList<Integer> result = MiniMax.getMove(board,4,-9999999,9999999,true, getCounter());
+    ArrayList<Integer> result = MiniMax.getMove(board,8,-9999999,9999999,true, getCounter());
     System.out.println("call count: "+MiniMax.count);
     //TODO: make sure said analysis uses less than 2G of heap and returns within 10 seconds on whichever machine is running it
     System.out.println("move: " + result.get(0) + "  TimeElapsed: " + (System.currentTimeMillis() - tzero) + "ms");
