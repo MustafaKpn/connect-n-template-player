@@ -112,7 +112,7 @@ public class forScoring {
             if (scores.get(counter) == 3) {
                 score += 100;   // 1st priority to place winning move
             } else if (scores.get(counter.getOther()) == 3) {
-                score += 50;   // 2nd priority to block opponent winning move
+                score -= 50;   // 2nd priority to block opponent winning move
             } else {
                 forcesG += scores.get(counter);
                 opp += scores.get(counter.getOther());
